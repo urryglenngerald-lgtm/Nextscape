@@ -1,88 +1,104 @@
+import { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView, ScrollView, View, Text, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView, Pressable, StyleSheet, StatusBar as RNStatusBar } from 'react-native';
+import Svg, { Path, Circle, Rect } from 'react-native-svg';
+import Header from './src/Header';
+import { MonthScreen, DetailScreen, ArchiveScreen, SavedScreen, AboutScreen } from './src/screens';
+import { DESTINATIONS } from './src/data';
+import { colors } from './src/theme';
 
-// This month's three destinations. Edit this list each month.
-const MONTH = 'November 2026';
-const DESTINATIONS = [
-  {
-    id: '1',
-    name: 'Lisbon',
-    country: 'Portugal',
-    tagline: 'Mild winter sun, custard tarts, hilltop views',
-    go: 'Alfama at sunset',
-    avoid: 'Tram 28 at midday',
-    image: 'https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=1200',
-  },
-  {
-    id: '2',
-    name: 'Kotor',
-    country: 'Montenegro',
-    tagline: 'Fjord-like bay, no summer crowds',
-    go: 'The fortress walk at dawn',
-    avoid: 'Cruise ship days in the old town',
-    image: 'https://images.unsplash.com/photo-1563788564048-4d4e0d1c5c66?w=1200',
-  },
-  {
-    id: '3',
-    name: 'Ljubljana',
-    country: 'Slovenia',
-    tagline: 'Christmas lights start late November',
-    go: 'Riverside cafés on Trubarjeva',
-    avoid: 'Overpriced castle restaurant',
-    image: 'https://images.unsplash.com/photo-1574856344991-aaa31b6f4ce3?w=1200',
-  },
-];
+export default function App() {
+  const [tab, setTab] = useState('month');
+  const [openId, setOpenId] = useState(null);
+  const [saved, setSaved] = useState([]);
 
-function DestinationCard({ item, index }) {
+  const toggleSave = (id) =>
+    setSaved((list) => (list.includes(id) ? list.filter((x) => x !== id) : [...list, id]));
+
+  const open = DESTINATIONS.find((d) => d.id === openId);
+
+  let body;
+  if (open) {
+    body = (
+      <DetailScreen
+        d={open}
+        saved={saved.includes(open.id)}
+        onSave={() => toggleSave(open.id)}
+        onBack={() => setOpenId(null)}
+      />
+    );
+  } else if (tab === 'month') body = <MonthScreen onOpen={setOpenId} />;
+  else if (tab === 'archive') body = <ArchiveScreen />;
+  else if (tab === 'saved') body = <SavedScreen saved={saved} onOpen={setOpenId} />;
+  else body = <AboutScreen />;
+
   return (
-    <TouchableOpacity activeOpacity={0.85} style={styles.card}>
-      <ImageBackground source={{ uri: item.image }} style={styles.image} imageStyle={styles.imageRadius}>
-        <View style={styles.overlay}>
-          <Text style={styles.number}>0{index + 1}</Text>
-          <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.country}>{item.country}</Text>
-          <Text style={styles.tagline}>{item.tagline}</Text>
-          <View style={styles.tips}>
-            <Text style={styles.go}>✓ Go: {item.go}</Text>
-            <Text style={styles.avoid}>✕ Skip: {item.avoid}</Text>
-          </View>
-        </View>
-      </ImageBackground>
-    </TouchableOpacity>
+    <View style={styles.app}>
+      <StatusBar style="light" />
+      <ScrollView key={openId || tab} contentContainerStyle={styles.scroll} showsVerticalScrollIndicator={false}>
+        <Header />
+        {body}
+      </ScrollView>
+      <TabBar
+        tab={tab}
+        onChange={(t) => {
+          setOpenId(null);
+          setTab(t);
+        }}
+      />
+    </View>
   );
 }
 
-export default function App() {
+const TABS = [
+  { id: 'month', label: 'MONTH' },
+  { id: 'archive', label: 'ARCHIVE' },
+  { id: 'saved', label: 'SAVED' },
+  { id: 'about', label: 'ABOUT' },
+];
+
+function TabIcon({ id, color }) {
+  const p = { stroke: color, strokeWidth: 1.5, fill: 'none' };
   return (
-    <SafeAreaView style={styles.screen}>
-      <StatusBar style="light" />
-      <ScrollView contentContainerStyle={styles.content}>
-        <Text style={styles.brand}>NEXTSCAPE</Text>
-        <Text style={styles.heading}>Three places for {MONTH}</Text>
-        <Text style={styles.sub}>Where to go, and what to skip when you get there.</Text>
-        {DESTINATIONS.map((d, i) => (
-          <DestinationCard key={d.id} item={d} index={i} />
-        ))}
-      </ScrollView>
-    </SafeAreaView>
+    <Svg width={20} height={20} viewBox="0 0 24 24">
+      {id === 'month' && (<><Circle cx="12" cy="12" r="9" {...p} /><Path d="M15.5 8.5l-2 5-5 2 2-5z" {...p} /></>)}
+      {id === 'archive' && (<><Rect x="3" y="4" width="18" height="5" rx="1" {...p} /><Path d="M5 9v10h14V9M10 13h4" {...p} /></>)}
+      {id === 'saved' && <Path d="M6 3h12v18l-6-4-6 4z" {...p} />}
+      {id === 'about' && (<><Circle cx="12" cy="12" r="9" {...p} /><Path d="M12 11v6M12 7.5v.5" {...p} /></>)}
+    </Svg>
+  );
+}
+
+function TabBar({ tab, onChange }) {
+  return (
+    <View style={styles.tabbar}>
+      {TABS.map((t) => {
+        const active = tab === t.id;
+        const color = active ? colors.chrome : colors.dim;
+        return (
+          <Pressable key={t.id} style={styles.tab} onPress={() => onChange(t.id)}>
+            <TabIcon id={t.id} color={color} />
+            <Text style={[styles.tabLabel, { color }]}>{t.label}</Text>
+            <View style={[styles.dot, { opacity: active ? 1 : 0 }]} />
+          </Pressable>
+        );
+      })}
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: '#0e0f13' },
-  content: { padding: 20, paddingTop: 40 },
-  brand: { color: '#f2b84b', fontSize: 14, fontWeight: '700', letterSpacing: 4 },
-  heading: { color: '#ffffff', fontSize: 30, fontWeight: '800', marginTop: 8 },
-  sub: { color: '#9a9ca5', fontSize: 15, marginTop: 6, marginBottom: 24 },
-  card: { marginBottom: 20, borderRadius: 20, overflow: 'hidden' },
-  image: { height: 300, justifyContent: 'flex-end' },
-  imageRadius: { borderRadius: 20 },
-  overlay: { padding: 18, backgroundColor: 'rgba(0,0,0,0.45)' },
-  number: { color: '#f2b84b', fontSize: 13, fontWeight: '700' },
-  name: { color: '#fff', fontSize: 28, fontWeight: '800' },
-  country: { color: '#ddd', fontSize: 14, marginBottom: 6 },
-  tagline: { color: '#fff', fontSize: 15 },
-  tips: { marginTop: 10 },
-  go: { color: '#8be28b', fontSize: 13, marginTop: 2 },
-  avoid: { color: '#ff8a80', fontSize: 13, marginTop: 2 },
+  app: { flex: 1, backgroundColor: colors.bg, paddingTop: RNStatusBar.currentHeight || 24 },
+  scroll: { paddingHorizontal: 20, paddingBottom: 32 },
+  tabbar: {
+    flexDirection: 'row',
+    borderTopWidth: 1,
+    borderTopColor: colors.line,
+    backgroundColor: colors.bg,
+    paddingTop: 10,
+    paddingBottom: 18,
+  },
+  tab: { flex: 1, alignItems: 'center', gap: 5 },
+  tabLabel: { fontSize: 10, letterSpacing: 1.4 },
+  dot: { width: 4, height: 4, borderRadius: 2, backgroundColor: colors.chrome },
 });
