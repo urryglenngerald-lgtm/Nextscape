@@ -1,51 +1,18 @@
 // Nextscape: single-file version for Expo Snack.
-// The main app lives in /App.js and /src. This copy loads the photos from GitHub.
+// Content (month and destinations) loads from data/destinations.json on GitHub,
+// so editing that file updates the app without touching this code.
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, ScrollView, Pressable, ImageBackground, StyleSheet, Linking, StatusBar as RNStatusBar } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Defs, LinearGradient as SvgGradient, RadialGradient, Stop, Path, Circle, Rect } from 'react-native-svg';
 
 const colors = { bg: '#000000', panel: '#0c0d0f', chrome: '#e9ebee', silver: '#a7abb2', dim: '#5f636a', line: '#1d1f23' };
-const PHOTO = (name) => ({ uri: `https://raw.githubusercontent.com/urryglenngerald-lgtm/Nextscape/main/assets/${name}.jpg` });
+const REPO = 'https://raw.githubusercontent.com/urryglenngerald-lgtm/Nextscape/main';
+const DATA_URL = `${REPO}/data/destinations.json`;
+const PHOTO = (name) => ({ uri: `${REPO}/assets/${name}.jpg` });
 const EMAIL = 'geraldexplores@gmail.com';
-const MONTH = 'November 2026';
-
-const DESTINATIONS = [
-  {
-    id: 'lisbon', name: 'Lisbon', country: 'Portugal', photo: PHOTO('lisbon'),
-    tagline: 'Mild winter sun and hilltop views.', go: 'Alfama at sunset', skip: 'Tram 28 at midday',
-    details: {
-      why: 'The summer crowds are gone and the days are still mild. On 11 November the city celebrates São Martinho, and roasted chestnut carts fill the street corners.',
-      facts: [
-        { label: 'WEATHER', value: '11–18°C' },
-        { label: 'BUDGET', value: '€€' },
-        { label: 'STAY', value: '3–4 days' },
-        { label: 'CURRENCY', value: 'Euro' },
-      ],
-      go: [
-        { name: 'Miradouro da Senhora do Monte', note: 'One of the highest viewpoints in the city. Arrive half an hour before sunset.' },
-        { name: 'Alfama before 10am', note: 'Wander the old lanes before the tour groups arrive.' },
-        { name: 'Belém', note: 'Jerónimos Monastery, then custard tarts at Pastéis de Belém.' },
-        { name: 'LX Factory', note: 'A former industrial complex full of shops, bars and the Ler Devagar bookshop.' },
-      ],
-      skip: [
-        { name: 'Tram 28 at midday', note: 'Packed, slow and a favourite with pickpockets.', instead: 'Ride it before 9am, or walk the route.' },
-        { name: 'The Santa Justa Lift queue', note: 'A long wait for a very short ride.', instead: 'Walk to the top from Largo do Carmo.' },
-        { name: 'Restaurants with touts on Rua Augusta', note: 'Tourist prices for average food.', instead: 'Eat at a local tasca in Graça or Campo de Ourique.' },
-      ],
-    },
-  },
-  {
-    id: 'kotor', name: 'Kotor', country: 'Montenegro', photo: PHOTO('kotor'),
-    tagline: 'A fjord-like bay without the summer crowds.', go: 'The fortress walk at dawn', skip: 'Old town on cruise ship days', details: null,
-  },
-  {
-    id: 'ljubljana', name: 'Ljubljana', country: 'Slovenia', photo: PHOTO('ljubljana'),
-    tagline: 'Christmas lights from late November.', go: 'Riverside cafés on Trubarjeva', skip: 'The castle restaurant', details: null,
-  },
-];
 
 /* ---------- Header: stars and wordmark ---------- */
 
@@ -143,7 +110,7 @@ function Block({ title, children }) {
 function DestinationCard({ d, index, onPress }) {
   return (
     <Pressable onPress={onPress} style={({ pressed }) => [s.card, pressed && { transform: [{ scale: 0.985 }] }]}>
-      <ImageBackground source={d.photo} style={s.cardArt} imageStyle={s.photo}>
+      <ImageBackground source={PHOTO(d.photo)} style={s.cardArt} imageStyle={s.photo}>
         <LinearGradient colors={['rgba(12,13,15,0)', colors.panel]} style={StyleSheet.absoluteFill} />
         <Text style={s.num}>{String(index + 1).padStart(2, '0')}</Text>
       </ImageBackground>
@@ -166,26 +133,26 @@ function DestinationCard({ d, index, onPress }) {
   );
 }
 
-function MonthScreen({ onOpen }) {
+function MonthScreen({ data, onOpen }) {
   return (
     <View style={s.view}>
-      <Intro eyebrow={`${MONTH.toUpperCase()}  ·  3 PLACES`} title="Where to go this month, and what to skip." />
-      {DESTINATIONS.map((d, i) => (
+      <Intro eyebrow={`${data.month.toUpperCase()}  ·  ${data.destinations.length} PLACES`} title="Where to go this month, and what to skip." />
+      {data.destinations.map((d, i) => (
         <DestinationCard key={d.id} d={d} index={i} onPress={() => onOpen(d.id)} />
       ))}
     </View>
   );
 }
 
-function DetailScreen({ d, saved, onSave, onBack }) {
-  const index = DESTINATIONS.findIndex((x) => x.id === d.id);
+function DetailScreen({ data, d, saved, onSave, onBack }) {
+  const index = data.destinations.findIndex((x) => x.id === d.id);
   const info = d.details;
   return (
     <View style={s.view}>
       <Pressable onPress={onBack} hitSlop={10}>
         <Text style={s.back}>←  THIS MONTH</Text>
       </Pressable>
-      <ImageBackground source={d.photo} style={s.hero} imageStyle={s.photo}>
+      <ImageBackground source={PHOTO(d.photo)} style={s.hero} imageStyle={s.photo}>
         <LinearGradient colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.85)']} style={StyleSheet.absoluteFill} />
         <Pressable onPress={onSave} style={s.save} hitSlop={8}>
           <Svg width={18} height={18} viewBox="0 0 24 24">
@@ -193,7 +160,7 @@ function DetailScreen({ d, saved, onSave, onBack }) {
           </Svg>
         </Pressable>
         <View style={s.heroText}>
-          <Text style={s.eyebrow}>{`${String(index + 1).padStart(2, '0')}  ·  ${MONTH.toUpperCase()}`}</Text>
+          <Text style={s.eyebrow}>{`${String(index + 1).padStart(2, '0')}  ·  ${data.month.toUpperCase()}`}</Text>
           <Text style={[s.place, { fontSize: 36 }]}>{d.name}</Text>
           <Text style={s.country}>{d.country.toUpperCase()}</Text>
         </View>
@@ -245,8 +212,8 @@ function ArchiveScreen() {
   );
 }
 
-function SavedScreen({ saved, onOpen }) {
-  const list = DESTINATIONS.filter((d) => saved.includes(d.id));
+function SavedScreen({ data, saved, onOpen }) {
+  const list = data.destinations.filter((d) => saved.includes(d.id));
   return (
     <View style={s.view}>
       <Intro eyebrow="SAVED" title="Your places." />
@@ -282,6 +249,23 @@ function AboutScreen() {
           <Text style={s.emailAction}>EMAIL</Text>
         </Pressable>
       </Block>
+    </View>
+  );
+}
+
+function StatusScreen({ error, onRetry }) {
+  return (
+    <View style={s.view}>
+      {error ? (
+        <>
+          <Text style={s.body}>This month's places didn't load. Check your connection and try again.</Text>
+          <Pressable onPress={onRetry} style={s.email}>
+            <Text style={s.emailAction}>TRY AGAIN</Text>
+          </Pressable>
+        </>
+      ) : (
+        <Text style={s.body}>Loading this month's places…</Text>
+      )}
     </View>
   );
 }
@@ -329,15 +313,28 @@ export default function App() {
   const [tab, setTab] = useState('month');
   const [openId, setOpenId] = useState(null);
   const [saved, setSaved] = useState([]);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(false);
+
+  const load = () => {
+    setError(false);
+    fetch(`${DATA_URL}?t=${Date.now()}`)
+      .then((r) => { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+      .then(setData)
+      .catch(() => setError(true));
+  };
+  useEffect(load, []);
+
   const toggleSave = (id) => setSaved((list) => (list.includes(id) ? list.filter((x) => x !== id) : [...list, id]));
-  const open = DESTINATIONS.find((d) => d.id === openId);
+  const open = data ? data.destinations.find((d) => d.id === openId) : null;
 
   let body;
-  if (open) body = <DetailScreen d={open} saved={saved.includes(open.id)} onSave={() => toggleSave(open.id)} onBack={() => setOpenId(null)} />;
-  else if (tab === 'month') body = <MonthScreen onOpen={setOpenId} />;
-  else if (tab === 'archive') body = <ArchiveScreen />;
-  else if (tab === 'saved') body = <SavedScreen saved={saved} onOpen={setOpenId} />;
-  else body = <AboutScreen />;
+  if (tab === 'about' && !open) body = <AboutScreen />;
+  else if (tab === 'archive' && !open) body = <ArchiveScreen />;
+  else if (!data) body = <StatusScreen error={error} onRetry={load} />;
+  else if (open) body = <DetailScreen data={data} d={open} saved={saved.includes(open.id)} onSave={() => toggleSave(open.id)} onBack={() => setOpenId(null)} />;
+  else if (tab === 'saved') body = <SavedScreen data={data} saved={saved} onOpen={setOpenId} />;
+  else body = <MonthScreen data={data} onOpen={setOpenId} />;
 
   return (
     <View style={a.app}>

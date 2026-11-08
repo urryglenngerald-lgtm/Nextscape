@@ -1,0 +1,92 @@
+{
+  "month": "November 2026",
+  "destinations": [
+    {
+      "id": "lisbon",
+      "name": "Lisbon",
+      "country": "Portugal",
+      "photo": "lisbon",
+      "tagline": "Mild winter sun and hilltop views.",
+      "go": "Alfama at sunset",
+      "skip": "Tram 28 at midday",
+      "details": {
+        "why": "The summer crowds are gone and the days are still mild. On 11 November the city celebrates São Martinho, and roasted chestnut carts fill the street corners.",
+        "facts": [
+          { "label": "WEATHER", "value": "11–18°C" },
+          { "label": "BUDGET", "value": "€€" },
+          { "label": "STAY", "value": "3–4 days" },
+          { "label": "CURRENCY", "value": "Euro" }
+        ],
+        "go": [
+          { "name": "Miradouro da Senhora do Monte", "note": "One of the highest viewpoints in the city. Arrive half an hour before sunset." },
+          { "name": "Alfama before 10am", "note": "Wander the old lanes before the tour groups arrive." },
+          { "name": "Belém", "note": "Jerónimos Monastery, then custard tarts at Pastéis de Belém." },
+          { "name": "LX Factory", "note": "A former industrial complex full of shops, bars and the Ler Devagar bookshop." }
+        ],
+        "skip": [
+          { "name": "Tram 28 at midday", "note": "Packed, slow and a favourite with pickpockets.", "instead": "Ride it before 9am, or walk the route." },
+          { "name": "The Santa Justa Lift queue", "note": "A long wait for a very short ride.", "instead": "Walk to the top from Largo do Carmo." },
+          { "name": "Restaurants with touts on Rua Augusta", "note": "Tourist prices for average food.", "instead": "Eat at a local tasca in Graça or Campo de Ourique." }
+        ]
+      }
+    },
+    {
+      "id": "kotor",
+      "name": "Kotor",
+      "country": "Montenegro",
+      "photo": "kotor",
+      "tagline": "A dramatic bay, quiet lanes and off-season prices.",
+      "go": "The Ladder of Kotor at dawn",
+      "skip": "The Old Town on cruise ship days",
+      "details": {
+        "why": "The summer crowds have gone and prices drop, but the bay is at its most dramatic. Pack a raincoat: November is one of Kotor's wettest months, so save the climbs for a dry morning.",
+        "facts": [
+          { "label": "WEATHER", "value": "6–16°C" },
+          { "label": "BUDGET", "value": "€" },
+          { "label": "STAY", "value": "2–3 days" },
+          { "label": "CURRENCY", "value": "Euro" }
+        ],
+        "go": [
+          { "name": "The Ladder of Kotor at dawn", "note": "A free switchback trail above town with sweeping views of the bay. Start early and wear proper shoes." },
+          { "name": "Perast", "note": "A tiny baroque town about 20 minutes along the bay, facing the island church of Our Lady of the Rocks." },
+          { "name": "A konoba in the Old Town", "note": "Warm up in a traditional tavern with Njeguši ham, local cheese and a glass of Vranac red." },
+          { "name": "The Old Town after 5pm", "note": "Once the day-trippers leave, the squares, churches and famous cats have the place back." }
+        ],
+        "skip": [
+          { "name": "The Old Town on cruise ship days", "note": "Day-trippers can pack the narrow lanes from late morning.", "instead": "Check the port's cruise schedule and explore early or after 5pm." },
+          { "name": "The €15 fortress climb on a wet day", "note": "The limestone steps get slippery and the view can vanish into cloud.", "instead": "Wait for a dry morning. From 1 December the climb is free." },
+          { "name": "Driving into the Old Town area", "note": "Parking is scarce and expensive, and clamping is common.", "instead": "Park outside the centre and walk in." }
+        ]
+      }
+    },
+    {
+      "id": "ljubljana",
+      "name": "Ljubljana",
+      "country": "Slovenia",
+      "photo": "ljubljana",
+      "tagline": "Festive lights switch on 27 November.",
+      "go": "The lights switch-on, 27 November",
+      "skip": "The castle funicular",
+      "details": {
+        "why": "On 27 November Ljubljana switches on its festive lights and its December celebrations begin. Come earlier in the month for quiet streets and lower prices, or late for the lights. Mornings are often foggy, so save the views for the afternoon.",
+        "facts": [
+          { "label": "WEATHER", "value": "0–12°C" },
+          { "label": "BUDGET", "value": "€€" },
+          { "label": "STAY", "value": "2–3 days" },
+          { "label": "CURRENCY", "value": "Euro" }
+        ],
+        "go": [
+          { "name": "Prešeren Square, 27 November", "note": "The festive lights switch on at 5pm, opening the city's December celebrations." },
+          { "name": "The Central Market", "note": "Fresh produce, cheese and local snacks by the river. Go in the morning, Monday to Saturday." },
+          { "name": "Ljubljana Castle", "note": "Walk up for views over the red rooftops. Best in the afternoon, once the morning fog lifts." },
+          { "name": "Metelkova", "note": "Former army barracks turned into a graffiti-covered alternative arts quarter." }
+        ],
+        "skip": [
+          { "name": "The castle funicular", "note": "You pay for a ride that lasts about a minute.", "instead": "Walk up from the old town in around 15 minutes." },
+          { "name": "Driving into the centre", "note": "The old town is largely car-free and parking is expensive.", "instead": "Use a park-and-ride on the edge of the city and take the bus in." },
+          { "name": "Lake Bled as a rushed half day", "note": "November days are short, and a quick trip means more time on the bus than at the lake.", "instead": "Give it a full day, or save it for another trip." }
+        ]
+      }
+    }
+  ]
+}
