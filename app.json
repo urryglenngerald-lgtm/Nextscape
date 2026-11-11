@@ -2,10 +2,13 @@
   "expo": {
     "name": "Nextscape",
     "slug": "nextscape",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
     "backgroundColor": "#000000",
-    "android": { "package": "com.gerald.nextscape" }
+    "android": {
+      "package": "com.gerald.nextscape",
+      "versionCode": 1
+    }
   }
 }
