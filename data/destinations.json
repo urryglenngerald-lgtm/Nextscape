@@ -27,6 +27,31 @@
           { "name": "Tram 28 at midday", "note": "Packed, slow and a favourite with pickpockets.", "instead": "Ride it before 9am, or walk the route." },
           { "name": "The Santa Justa Lift queue", "note": "A long wait for a very short ride.", "instead": "Walk to the top from Largo do Carmo." },
           { "name": "Restaurants with touts on Rua Augusta", "note": "Tourist prices for average food.", "instead": "Eat at a local tasca in Graça or Campo de Ourique." }
+        ],
+        "taste": {
+          "dishes": [
+            { "name": "Bacalhau à Brás", "note": "Shredded salt cod scrambled with straw potatoes, egg and onion. The dish to start with." },
+            { "name": "Amêijoas à Bulhão Pato", "note": "Clams cooked with garlic, olive oil, lemon and coriander. Mop up the sauce with bread." },
+            { "name": "Peixinhos da horta", "note": "Green beans in a light batter, fried until crisp. The name means \"little fish from the garden\"." },
+            { "name": "Pastel de nata", "note": "Flaky pastry filled with caramelised custard, best eaten warm with cinnamon." }
+          ],
+          "places": [
+            { "name": "Ramiro", "map": "Cervejaria Ramiro, Lisbon", "note": "A busy seafood hall on Avenida Almirante Reis, known for its clams. Expect a queue at peak times." },
+            { "name": "Laurentina, O Rei do Bacalhau", "map": "Laurentina O Rei do Bacalhau, Lisbon", "note": "A long-standing restaurant on Avenida Conde Valbom devoted to salt cod." },
+            { "name": "Manteigaria", "map": "Manteigaria, Lisbon", "note": "Custard tarts baked in front of you, with several branches across the city." }
+          ]
+        },
+        "history": [
+          { "name": "The Age of Discoveries", "note": "Vasco da Gama sailed for India from Belém in 1497. The riches of the spice trade paid for the Jerónimos Monastery, begun a few years later." },
+          { "name": "The 1755 earthquake", "note": "On 1 November 1755 an earthquake, a tsunami and days of fire destroyed most of the city. The straight streets of the Baixa are the rebuild that followed." },
+          { "name": "Alfama", "note": "The oldest quarter, with a street plan that goes back to Moorish times. It came through 1755 better than the lower town, which is why its lanes still twist." },
+          { "name": "25 April 1974", "note": "The Carnation Revolution ended almost half a century of dictatorship, nearly without bloodshed. The red suspension bridge over the Tagus is named after the date." }
+        ],
+        "nightlife": [
+          { "name": "Bairro Alto", "map": "Bairro Alto, Lisbon", "note": "Hilly lanes packed with small bars, cheap drinks and crowds that spill into the street. The liveliest area after dark." },
+          { "name": "Pink Street, Cais do Sodré", "map": "Rua Nova do Carvalho, Lisbon", "note": "A former red-light street turned bar strip. Pensão Amor is the best-known stop, and MusicBox has live music and DJs." },
+          { "name": "Fado at Tasca do Chico", "map": "Tasca do Chico, Lisbon", "note": "A small, informal fado bar with two branches. Bairro Alto is livelier, Alfama more intimate. Go early, it fills fast." },
+          { "name": "Lux Frágil", "map": "Lux Frágil, Lisbon", "note": "The city's best-known club, in a former warehouse by the river with a rooftop bar. The door is selective, so dress the part." }
         ]
       }
     },
@@ -56,6 +81,30 @@
           { "name": "The Old Town on cruise ship days", "note": "Day-trippers can pack the narrow lanes from late morning.", "instead": "Check the port's cruise schedule and explore early or after 5pm." },
           { "name": "The €15 fortress climb on a wet day", "note": "The limestone steps get slippery and the view can vanish into cloud.", "instead": "Wait for a dry morning. From 1 December the climb is free." },
           { "name": "Driving into the Old Town area", "note": "Parking is scarce and expensive, and clamping is common.", "instead": "Park outside the centre and walk in." }
+        ],
+        "taste": {
+          "dishes": [
+            { "name": "Mussels na buzaru", "note": "Boka Bay mussels cooked in white wine, garlic, olive oil and parsley." },
+            { "name": "Crni rižot", "note": "Black risotto coloured with cuttlefish ink, a legacy of Venetian rule." },
+            { "name": "Njeguški pršut and cheese", "note": "Smoky dry-cured ham and sheep's cheese from the mountain village of Njeguši, above the bay." },
+            { "name": "Ispod sača", "note": "Lamb or veal slow-roasted under an iron dome covered in embers. Hearty, and right for a wet November day." }
+          ],
+          "places": [
+            { "name": "Konoba Scala Santa", "map": "Konoba Scala Santa, Kotor", "note": "A family-run konoba on Trg od Salate in the Old Town, known for black risotto and fish stew." },
+            { "name": "Stari Mlini", "map": "Stari Mlini, Ljuta, Kotor", "note": "A restaurant in a centuries-old mill by the water at Ljuta, along the bay. Fish, mussels and a clay-pot dish of the day." },
+            { "name": "Marenda Grill House", "map": "Marenda Grill House, Kotor", "note": "Grilled meat a short walk outside the Old Town walls. Check opening hours before you go, as winter schedules vary." }
+          ]
+        },
+        "history": [
+          { "name": "A walled port", "note": "Kotor has been a trading port since Roman times. St Tryphon's Cathedral, at the heart of the Old Town, was consecrated in 1166." },
+          { "name": "Venice, 1420 to 1797", "note": "Almost four centuries of Venetian rule gave the town its walls, palaces and the winged lions still carved above its gates." },
+          { "name": "The 1979 earthquake", "note": "A major earthquake badly damaged the Old Town in April 1979. The same year UNESCO listed Kotor as a World Heritage Site, and the restoration took years." }
+        ],
+        "nightlife": [
+          { "name": "November is quiet", "note": "Kotor's nightlife is a summer affair. Off season, evenings mean a long dinner and a drink in the Old Town rather than clubs, and some bars close for a few weeks." },
+          { "name": "Old Winery Wine Bar", "map": "Old Winery Wine Bar, Kotor", "note": "Local Vranac by the glass with a plate of ham and cheese, and jazz in the background." },
+          { "name": "Pub Old Town", "map": "Pub Old Town, Kotor", "note": "A lively pub with an international crowd, open all year." },
+          { "name": "Maximus", "map": "Maximus Club, Kotor", "note": "The big club built into the walls by the Sea Gate. It peaks in July and August, and in winter it opens only for events, so check first." }
         ]
       }
     },
@@ -85,6 +134,31 @@
           { "name": "The castle funicular", "note": "You pay for a ride that lasts about a minute.", "instead": "Walk up from the old town in around 15 minutes." },
           { "name": "Driving into the centre", "note": "The old town is largely car-free and parking is expensive.", "instead": "Use a park-and-ride on the edge of the city and take the bus in." },
           { "name": "Lake Bled as a rushed half day", "note": "November days are short, and a quick trip means more time on the bus than at the lake.", "instead": "Give it a full day, or save it for another trip." }
+        ],
+        "taste": {
+          "dishes": [
+            { "name": "Štruklji", "note": "Rolled dough dumplings with fillings such as cottage cheese, walnut or apple, served sweet or savoury." },
+            { "name": "Kranjska klobasa", "note": "Smoked Carniolan pork sausage with garlic and pepper, served with mustard and horseradish." },
+            { "name": "Jota", "note": "A thick winter stew of beans, sauerkraut and potato, often with pork. Made for November." },
+            { "name": "Prekmurska gibanica", "note": "A layered cake of poppy seed, walnut, apple and cottage cheese." }
+          ],
+          "places": [
+            { "name": "Klobasarna", "map": "Klobasarna, Ljubljana", "note": "A small counter beside the cathedral that serves Carniolan sausage and little else. Quick, cheap and good." },
+            { "name": "Moji štruklji", "map": "Moji štruklji Slovenije, Ljubljana", "note": "A štruklji specialist with around a dozen fillings." },
+            { "name": "Gostilna na Gradu", "map": "Gostilna na Gradu, Ljubljana", "note": "Regional Slovenian dishes up at the castle, at higher prices. Book ahead." }
+          ]
+        },
+        "history": [
+          { "name": "Roman Emona", "note": "The Romans built the town of Emona here about two thousand years ago. Stretches of its wall still stand south of the centre." },
+          { "name": "The 1895 earthquake", "note": "A strong earthquake damaged much of the city. The rebuild brought the Art Nouveau facades you see around Prešeren Square." },
+          { "name": "Plečnik's city", "note": "Between the wars the architect Jože Plečnik reshaped Ljubljana: the Triple Bridge, the Central Market and the riverside embankments are his. UNESCO listed his work here in 2021." },
+          { "name": "A young capital", "note": "Slovenia declared independence from Yugoslavia in 1991, making Ljubljana a national capital." }
+        ],
+        "nightlife": [
+          { "name": "The riverside", "map": "Tozd, Ljubljana", "note": "Bars and terraces line both banks of the Ljubljanica. Tozd, on Gallusovo nabrežje, is an easy first stop. In November, how lively it gets depends on the weather." },
+          { "name": "Dvorni Bar", "map": "Dvorni Bar, Ljubljana", "note": "A wine bar beside Congress Square with a long list of Slovenian wines." },
+          { "name": "Nebotičnik", "map": "Nebotičnik, Ljubljana", "note": "The café and bar at the top of a 1933 skyscraper, with views to the castle. Best at sunset." },
+          { "name": "Metelkova", "map": "Metelkova, Ljubljana", "note": "Clubs and live music in a former army barracks. Each space runs its own nights, so check what is on. It can feel empty when little is happening." }
         ]
       }
     }

@@ -8,7 +8,9 @@ import { View, Text, ScrollView, Pressable, ImageBackground, StyleSheet, Linking
 import { LinearGradient } from 'expo-linear-gradient';
 import Svg, { Defs, LinearGradient as SvgGradient, RadialGradient, Stop, Path, Circle, Rect } from 'react-native-svg';
 
-const colors = { bg: '#000000', panel: '#0c0d0f', chrome: '#e9ebee', silver: '#a7abb2', dim: '#5f636a', line: '#1d1f23' };
+const colors = { bg: '#000000', panel: '#0c0d0f', chrome: '#e9ebee', silver: '#a7abb2', dim: '#5f636a', line: '#1d1f23', rose: '#e8b9aa', roseDeep: '#b76e79' };
+const ROSE_CLEAR = 'rgba(232,185,170,0)';
+const ROSE_SOFT = 'rgba(232,185,170,0.10)';
 const REPO = 'https://raw.githubusercontent.com/urryglenngerald-lgtm/Nextscape/main';
 const DATA_URL = `${REPO}/data/destinations.json`;
 const PHOTO = (name) => ({ uri: `${REPO}/assets/${name}.jpg` });
@@ -27,25 +29,7 @@ const PLAN = (d) => {
 const MAP_URL = (place) => `https://www.google.com/maps/search/?api=1&query=${q(place)}`;
 const openLink = (url) => Linking.openURL(url).catch(() => {});
 
-/* ---------- Header: stars and wordmark ---------- */
-
-let seed = 7;
-const rnd = () => { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; };
-const STARS = Array.from({ length: 45 }, () => {
-  const big = rnd() < 0.07;
-  return { x: rnd() * 100, y: rnd() * 100, size: big ? 2 + rnd() : 0.8 + rnd() * 0.9, opacity: 0.3 + rnd() * 0.5 };
-});
-
-function Stars() {
-  return (
-    <View style={StyleSheet.absoluteFill} pointerEvents="none">
-      {STARS.map((st, i) => (
-        <View key={i} style={{ position: 'absolute', left: `${st.x}%`, top: `${st.y}%`, width: st.size, height: st.size, borderRadius: st.size / 2, backgroundColor: '#ebeef2', opacity: st.opacity }} />
-      ))}
-      <LinearGradient colors={['rgba(0,0,0,0)', colors.bg]} style={h.fade} />
-    </View>
-  );
-}
+/* ---------- Header: wordmark and subtitle ---------- */
 
 function ChromeX({ size }) {
   return (
@@ -81,23 +65,23 @@ function Header() {
   const size = 42;
   return (
     <View style={h.sky}>
-      <Stars />
       <View style={h.mark}>
         <Text style={[h.word, { fontSize: size }]}>ne</Text>
         <ChromeX size={size} />
         <Text style={[h.word, { fontSize: size }]}>tscape</Text>
       </View>
-      <LinearGradient colors={['rgba(255,255,255,0)', '#ffffff', 'rgba(255,255,255,0)']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={h.streak} />
+      <Text style={h.sub}>YOUR NEXT ADVENTURE!</Text>
+      <LinearGradient colors={[ROSE_CLEAR, colors.rose, ROSE_CLEAR]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={h.streak} />
     </View>
   );
 }
 
 const h = StyleSheet.create({
-  sky: { marginHorizontal: -20, paddingHorizontal: 20, paddingTop: 24, paddingBottom: 22, gap: 18 },
-  fade: { position: 'absolute', left: 0, right: 0, bottom: 0, height: '45%' },
+  sky: { paddingTop: 24, paddingBottom: 22 },
   mark: { flexDirection: 'row', alignItems: 'center' },
   word: { color: '#e6e8eb', fontWeight: '300', includeFontPadding: false },
-  streak: { height: 1, opacity: 0.9 },
+  sub: { fontSize: 11, letterSpacing: 4, color: colors.rose, marginTop: 6 },
+  streak: { height: 1, opacity: 0.9, marginTop: 18 },
 });
 
 /* ---------- Screens ---------- */
@@ -157,9 +141,32 @@ function MonthScreen({ data, onOpen }) {
   );
 }
 
+const SECTIONS = [
+  { id: 'guide', label: 'GUIDE' },
+  { id: 'taste', label: 'TASTE' },
+  { id: 'history', label: 'HISTORY' },
+  { id: 'nightlife', label: 'NIGHTLIFE' },
+];
+
+function Spot({ g }) {
+  return (
+    <View style={s.spot}>
+      <Text style={s.spotName}>{g.name}</Text>
+      <Text style={s.spotNote}>{g.note}</Text>
+      {g.map ? (
+        <Pressable onPress={() => openLink(MAP_URL(g.map))} hitSlop={12} style={s.mapLink} accessibilityRole="link" accessibilityLabel={`Open ${g.name} in maps`}>
+          <Text style={s.mapText}>MAP  ↗</Text>
+        </Pressable>
+      ) : null}
+    </View>
+  );
+}
+
 function DetailScreen({ data, d, saved, onSave, onBack }) {
   const index = data.destinations.findIndex((x) => x.id === d.id);
   const info = d.details;
+  const [section, setSection] = useState('guide');
+  const sections = info ? SECTIONS.filter((x) => x.id === 'guide' || info[x.id]) : [];
   return (
     <View style={s.view}>
       <Pressable onPress={onBack} hitSlop={10}>
@@ -182,6 +189,47 @@ function DetailScreen({ data, d, saved, onSave, onBack }) {
         <Text style={s.body}>The full guide for {d.name} is coming soon.</Text>
       ) : (
         <>
+          {sections.length > 1 ? (
+            <View style={s.pills}>
+              {sections.map((x) => {
+                const active = section === x.id;
+                return (
+                  <Pressable key={x.id} onPress={() => setSection(x.id)} style={[s.pill, active && s.pillOn]} accessibilityRole="tab" accessibilityState={{ selected: active }}>
+                    <Text style={[s.pillText, active && { color: colors.rose }]}>{x.label}</Text>
+                  </Pressable>
+                );
+              })}
+            </View>
+          ) : null}
+          {section === 'taste' && info.taste ? (
+            <>
+              <Intro eyebrow="FOOD AND DRINK" title={`Taste of ${d.name}`} />
+              <Block title="POPULAR DISHES">
+                {info.taste.dishes.map((g) => <Spot key={g.name} g={g} />)}
+              </Block>
+              <Block title="WHERE TO EAT">
+                {info.taste.places.map((g) => <Spot key={g.name} g={g} />)}
+              </Block>
+            </>
+          ) : null}
+          {section === 'history' && info.history ? (
+            <>
+              <Intro eyebrow="HISTORY" title={`${d.name} in brief`} />
+              <Block title="THE STORY SO FAR">
+                {info.history.map((g) => <Spot key={g.name} g={g} />)}
+              </Block>
+            </>
+          ) : null}
+          {section === 'nightlife' && info.nightlife ? (
+            <>
+              <Intro eyebrow="NIGHTLIFE" title={`${d.name} after dark`} />
+              <Block title="WHERE TO GO">
+                {info.nightlife.map((g) => <Spot key={g.name} g={g} />)}
+              </Block>
+            </>
+          ) : null}
+          {section === 'guide' ? (
+          <>
           <Block title="WHY THIS MONTH">
             <Text style={s.body}>{info.why}</Text>
           </Block>
@@ -194,17 +242,7 @@ function DetailScreen({ data, d, saved, onSave, onBack }) {
             ))}
           </View>
           <Block title="GO">
-            {info.go.map((g) => (
-              <View key={g.name} style={s.spot}>
-                <Text style={s.spotName}>{g.name}</Text>
-                <Text style={s.spotNote}>{g.note}</Text>
-                {g.map ? (
-                  <Pressable onPress={() => openLink(MAP_URL(g.map))} hitSlop={12} style={s.mapLink} accessibilityRole="link" accessibilityLabel={`Open ${g.name} in maps`}>
-                    <Text style={s.mapText}>MAP  ↗</Text>
-                  </Pressable>
-                ) : null}
-              </View>
-            ))}
+            {info.go.map((g) => <Spot key={g.name} g={g} />)}
           </Block>
           <Block title="SKIP">
             {info.skip.map((g) => (
@@ -215,6 +253,8 @@ function DetailScreen({ data, d, saved, onSave, onBack }) {
               </View>
             ))}
           </Block>
+          </>
+          ) : null}
           <Block title="PLAN IT">
             {PLAN(d).map((l) => (
               <Pressable key={l.label} onPress={() => openLink(l.url)} style={({ pressed }) => [s.email, pressed && { opacity: 0.7 }]} accessibilityRole="link">
@@ -321,11 +361,24 @@ function TabIcon({ id, color }) {
 function TabBar({ tab, onChange }) {
   return (
     <View style={a.tabbar}>
+      <LinearGradient colors={[ROSE_CLEAR, ROSE_SOFT]} style={a.tabGlow} pointerEvents="none" />
+      <LinearGradient colors={[ROSE_CLEAR, colors.rose, ROSE_CLEAR]} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={a.tabLine} pointerEvents="none" />
       {TABS.map((t) => {
         const active = tab === t.id;
-        const color = active ? colors.chrome : colors.dim;
+        const color = active ? colors.rose : colors.dim;
         return (
           <Pressable key={t.id} style={a.tab} onPress={() => onChange(t.id)}>
+            {active ? (
+              <Svg width={64} height={64} viewBox="0 0 64 64" style={a.halo} pointerEvents="none">
+                <Defs>
+                  <RadialGradient id="halo" cx="50%" cy="50%" r="50%">
+                    <Stop offset="0" stopColor={colors.rose} stopOpacity="0.32" />
+                    <Stop offset="1" stopColor={colors.rose} stopOpacity="0" />
+                  </RadialGradient>
+                </Defs>
+                <Circle cx="32" cy="32" r="32" fill="url(#halo)" />
+              </Svg>
+            ) : null}
             <TabIcon id={t.id} color={color} />
             <Text style={[a.tabLabel, { color }]}>{t.label}</Text>
             <View style={[a.dot, { opacity: active ? 1 : 0 }]} />
@@ -378,10 +431,13 @@ export default function App() {
 const a = StyleSheet.create({
   app: { flex: 1, backgroundColor: colors.bg, paddingTop: RNStatusBar.currentHeight || 24 },
   scroll: { paddingHorizontal: 20, paddingBottom: 32 },
-  tabbar: { flexDirection: 'row', borderTopWidth: 1, borderTopColor: colors.line, backgroundColor: colors.bg, paddingTop: 10, paddingBottom: 18 },
+  tabbar: { flexDirection: 'row', backgroundColor: colors.bg, paddingTop: 12, paddingBottom: 18 },
+  tabGlow: { position: 'absolute', left: 0, right: 0, top: -18, height: 18 },
+  tabLine: { position: 'absolute', left: 0, right: 0, top: 0, height: 1 },
+  halo: { position: 'absolute', top: -22, alignSelf: 'center' },
   tab: { flex: 1, alignItems: 'center', gap: 5 },
   tabLabel: { fontSize: 10, letterSpacing: 1.4 },
-  dot: { width: 4, height: 4, borderRadius: 2, backgroundColor: colors.chrome },
+  dot: { width: 4, height: 4, borderRadius: 2, backgroundColor: colors.rose },
 });
 
 const s = StyleSheet.create({
@@ -418,8 +474,12 @@ const s = StyleSheet.create({
   spotName: { fontSize: 16, color: colors.chrome },
   spotNote: { fontSize: 14, fontWeight: '300', lineHeight: 20, color: colors.silver },
   instead: { fontSize: 13, color: colors.chrome, marginTop: 2 },
+  pills: { flexDirection: 'row', gap: 8 },
+  pill: { flex: 1, minHeight: 44, alignItems: 'center', justifyContent: 'center', borderRadius: 14, borderWidth: 1, borderColor: colors.line, backgroundColor: colors.panel },
+  pillOn: { borderColor: colors.roseDeep, backgroundColor: ROSE_SOFT },
+  pillText: { fontSize: 10, letterSpacing: 1.6, color: colors.silver },
   mapLink: { alignSelf: 'flex-start', marginTop: 6, paddingVertical: 4 },
-  mapText: { fontSize: 11, letterSpacing: 2.2, color: colors.chrome },
+  mapText: { fontSize: 11, letterSpacing: 2.2, color: colors.rose },
   planNote: { fontSize: 12, fontWeight: '300', lineHeight: 18, color: colors.dim, marginTop: 6 },
   savedRow: { paddingVertical: 14, borderBottomWidth: 1, borderBottomColor: colors.line, gap: 4 },
   email: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 6, paddingVertical: 12, paddingHorizontal: 14, borderWidth: 1, borderColor: '#2a2c31', borderRadius: 14, backgroundColor: colors.panel },
