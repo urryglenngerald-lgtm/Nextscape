@@ -6,9 +6,14 @@
     "orientation": "portrait",
     "userInterfaceStyle": "dark",
     "backgroundColor": "#000000",
+    "icon": "./icons/icon.png",
     "android": {
       "package": "com.gerald.nextscape",
-      "versionCode": 1
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./icons/adaptive-icon.png",
+        "backgroundColor": "#000000"
+      }
     }
   }
 }
