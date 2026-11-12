@@ -14,6 +14,19 @@ const DATA_URL = `${REPO}/data/destinations.json`;
 const PHOTO = (name) => ({ uri: `${REPO}/assets/${name}.jpg` });
 const EMAIL = 'geraldexplores@gmail.com';
 
+// Outside links for planning a trip. Plain links: nothing is earned from them.
+const q = (text) => encodeURIComponent(text);
+const PLAN = (d) => {
+  const place = `${d.name}, ${d.country}`;
+  return [
+    { label: 'Hotels on Booking.com', action: 'STAY', url: `https://www.booking.com/searchresults.html?ss=${q(place)}` },
+    { label: 'Homes on Airbnb', action: 'STAY', url: `https://www.airbnb.com/s/${q(place)}/homes` },
+    { label: 'Flights on Google Flights', action: 'FLY', url: `https://www.google.com/travel/flights?q=${q(`Flights to ${place}`)}` },
+  ];
+};
+const MAP_URL = (place) => `https://www.google.com/maps/search/?api=1&query=${q(place)}`;
+const openLink = (url) => Linking.openURL(url).catch(() => {});
+
 /* ---------- Header: stars and wordmark ---------- */
 
 let seed = 7;
@@ -185,6 +198,11 @@ function DetailScreen({ data, d, saved, onSave, onBack }) {
               <View key={g.name} style={s.spot}>
                 <Text style={s.spotName}>{g.name}</Text>
                 <Text style={s.spotNote}>{g.note}</Text>
+                {g.map ? (
+                  <Pressable onPress={() => openLink(MAP_URL(g.map))} hitSlop={12} style={s.mapLink} accessibilityRole="link" accessibilityLabel={`Open ${g.name} in maps`}>
+                    <Text style={s.mapText}>MAP  ↗</Text>
+                  </Pressable>
+                ) : null}
               </View>
             ))}
           </Block>
@@ -196,6 +214,15 @@ function DetailScreen({ data, d, saved, onSave, onBack }) {
                 <Text style={s.instead}>Instead: {g.instead}</Text>
               </View>
             ))}
+          </Block>
+          <Block title="PLAN IT">
+            {PLAN(d).map((l) => (
+              <Pressable key={l.label} onPress={() => openLink(l.url)} style={({ pressed }) => [s.email, pressed && { opacity: 0.7 }]} accessibilityRole="link">
+                <Text style={s.emailText}>{l.label}</Text>
+                <Text style={s.emailAction}>{l.action}  ↗</Text>
+              </Pressable>
+            ))}
+            <Text style={s.planNote}>These open the provider's own site. Nextscape earns nothing from them.</Text>
           </Block>
         </>
       )}
@@ -391,6 +418,9 @@ const s = StyleSheet.create({
   spotName: { fontSize: 16, color: colors.chrome },
   spotNote: { fontSize: 14, fontWeight: '300', lineHeight: 20, color: colors.silver },
   instead: { fontSize: 13, color: colors.chrome, marginTop: 2 },
+  mapLink: { alignSelf: 'flex-start', marginTop: 6, paddingVertical: 4 },
+  mapText: { fontSize: 11, letterSpacing: 2.2, color: colors.chrome },
+  planNote: { fontSize: 12, fontWeight: '300', lineHeight: 18, color: colors.dim, marginTop: 6 },
   savedRow: { paddingVertical: 14, borderBottomWidth: 1, borderBottomColor: colors.line, gap: 4 },
   email: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginTop: 6, paddingVertical: 12, paddingHorizontal: 14, borderWidth: 1, borderColor: '#2a2c31', borderRadius: 14, backgroundColor: colors.panel },
   emailText: { fontSize: 14, color: colors.chrome, flexShrink: 1 },

@@ -18,10 +18,10 @@
           { "label": "CURRENCY", "value": "Euro" }
         ],
         "go": [
-          { "name": "Miradouro da Senhora do Monte", "note": "One of the highest viewpoints in the city. Arrive half an hour before sunset." },
-          { "name": "Alfama before 10am", "note": "Wander the old lanes before the tour groups arrive." },
-          { "name": "Belém", "note": "Jerónimos Monastery, then custard tarts at Pastéis de Belém." },
-          { "name": "LX Factory", "note": "A former industrial complex full of shops, bars and the Ler Devagar bookshop." }
+          { "name": "Miradouro da Senhora do Monte", "map": "Miradouro da Senhora do Monte, Lisbon", "note": "One of the highest viewpoints in the city. Arrive half an hour before sunset." },
+          { "name": "Alfama before 10am", "map": "Alfama, Lisbon", "note": "Wander the old lanes before the tour groups arrive." },
+          { "name": "Belém", "map": "Belém, Lisbon", "note": "Jerónimos Monastery, then custard tarts at Pastéis de Belém." },
+          { "name": "LX Factory", "map": "LX Factory, Lisbon", "note": "A former industrial complex full of shops, bars and the Ler Devagar bookshop." }
         ],
         "skip": [
           { "name": "Tram 28 at midday", "note": "Packed, slow and a favourite with pickpockets.", "instead": "Ride it before 9am, or walk the route." },
@@ -47,10 +47,10 @@
           { "label": "CURRENCY", "value": "Euro" }
         ],
         "go": [
-          { "name": "The Ladder of Kotor at dawn", "note": "A free switchback trail above town with sweeping views of the bay. Start early and wear proper shoes." },
-          { "name": "Perast", "note": "A tiny baroque town about 20 minutes along the bay, facing the island church of Our Lady of the Rocks." },
+          { "name": "The Ladder of Kotor at dawn", "map": "Ladder of Kotor, Montenegro", "note": "A free switchback trail above town with sweeping views of the bay. Start early and wear proper shoes." },
+          { "name": "Perast", "map": "Perast, Montenegro", "note": "A tiny baroque town about 20 minutes along the bay, facing the island church of Our Lady of the Rocks." },
           { "name": "A konoba in the Old Town", "note": "Warm up in a traditional tavern with Njeguši ham, local cheese and a glass of Vranac red." },
-          { "name": "The Old Town after 5pm", "note": "Once the day-trippers leave, the squares, churches and famous cats have the place back." }
+          { "name": "The Old Town after 5pm", "map": "Kotor Old Town, Montenegro", "note": "Once the day-trippers leave, the squares, churches and famous cats have the place back." }
         ],
         "skip": [
           { "name": "The Old Town on cruise ship days", "note": "Day-trippers can pack the narrow lanes from late morning.", "instead": "Check the port's cruise schedule and explore early or after 5pm." },
@@ -76,10 +76,10 @@
           { "label": "CURRENCY", "value": "Euro" }
         ],
         "go": [
-          { "name": "Prešeren Square, 27 November", "note": "The festive lights switch on at 5pm, opening the city's December celebrations." },
-          { "name": "The Central Market", "note": "Fresh produce, cheese and local snacks by the river. Go in the morning, Monday to Saturday." },
-          { "name": "Ljubljana Castle", "note": "Walk up for views over the red rooftops. Best in the afternoon, once the morning fog lifts." },
-          { "name": "Metelkova", "note": "Former army barracks turned into a graffiti-covered alternative arts quarter." }
+          { "name": "Prešeren Square, 27 November", "map": "Prešeren Square, Ljubljana", "note": "The festive lights switch on at 5pm, opening the city's December celebrations." },
+          { "name": "The Central Market", "map": "Ljubljana Central Market", "note": "Fresh produce, cheese and local snacks by the river. Go in the morning, Monday to Saturday." },
+          { "name": "Ljubljana Castle", "map": "Ljubljana Castle", "note": "Walk up for views over the red rooftops. Best in the afternoon, once the morning fog lifts." },
+          { "name": "Metelkova", "map": "Metelkova, Ljubljana", "note": "Former army barracks turned into a graffiti-covered alternative arts quarter." }
         ],
         "skip": [
           { "name": "The castle funicular", "note": "You pay for a ride that lasts about a minute.", "instead": "Walk up from the old town in around 15 minutes." },
