@@ -389,6 +389,31 @@ function TabBar({ tab, onChange }) {
   );
 }
 
+// Soft rose gold light on the black background. Kept faint on purpose.
+function Glow({ size, opacity, style }) {
+  return (
+    <Svg width={size} height={size} viewBox="0 0 100 100" style={[{ position: 'absolute' }, style]}>
+      <Defs>
+        <RadialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+          <Stop offset="0" stopColor={colors.rose} stopOpacity={opacity} />
+          <Stop offset="0.5" stopColor={colors.roseDeep} stopOpacity={opacity * 0.35} />
+          <Stop offset="1" stopColor={colors.roseDeep} stopOpacity="0" />
+        </RadialGradient>
+      </Defs>
+      <Circle cx="50" cy="50" r="50" fill="url(#bgGlow)" />
+    </Svg>
+  );
+}
+
+function Backdrop() {
+  return (
+    <View style={[StyleSheet.absoluteFill, { overflow: 'hidden' }]} pointerEvents="none">
+      <Glow size={460} opacity={0.17} style={{ top: -190, right: -170 }} />
+      <Glow size={400} opacity={0.1} style={{ bottom: 30, left: -220 }} />
+    </View>
+  );
+}
+
 export default function App() {
   const [tab, setTab] = useState('month');
   const [openId, setOpenId] = useState(null);
@@ -419,6 +444,7 @@ export default function App() {
   return (
     <View style={a.app}>
       <StatusBar style="light" />
+      <Backdrop />
       <ScrollView key={openId || tab} contentContainerStyle={a.scroll} showsVerticalScrollIndicator={false}>
         <Header />
         {body}
