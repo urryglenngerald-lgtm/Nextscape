@@ -274,7 +274,7 @@ function ArchiveScreen() {
   return (
     <View style={s.view}>
       <Intro eyebrow="ARCHIVE" title="Past picks live here." />
-      <Text style={s.body}>Each month's three destinations move here when the new set arrives. The first ones land in December.</Text>
+      <Text style={s.body}>Each month's destinations move here when the new set arrives. The first ones land in December.</Text>
     </View>
   );
 }
@@ -301,10 +301,10 @@ function SavedScreen({ data, saved, onOpen }) {
 function AboutScreen() {
   return (
     <View style={s.view}>
-      <Intro eyebrow="ABOUT" title="Every month, three places." />
-      <Text style={s.lede}>Nextscape picks three destinations worth your time right now, chosen for the season, the price and the crowds. For each one you get where to go and what to skip.</Text>
+      <Intro eyebrow="ABOUT" title="Every month, six places." />
+      <Text style={s.lede}>Nextscape picks six destinations around the world worth your time right now, chosen for the season, the price and the crowds. For each one you get where to go and what to skip.</Text>
       <Block title="HOW IT WORKS">
-        <Text style={s.body}>A new set of three arrives on the first of every month. Past picks stay in the Archive, and you can save the places you like for later.</Text>
+        <Text style={s.body}>A new set of six arrives on the first of every month. Past picks stay in the Archive, and you can save the places you like for later.</Text>
       </Block>
       <Block title="WHO'S BEHIND IT">
         <Text style={s.body}>Nextscape is created by Gerald eXplores, a travel brand focused on well-timed trips and honest advice. Every destination is researched and chosen by hand, never paid for.</Text>

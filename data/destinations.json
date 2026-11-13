@@ -161,6 +161,168 @@
           { "name": "Metelkova", "map": "Metelkova, Ljubljana", "note": "Clubs and live music in a former army barracks. Each space runs its own nights, so check what is on. It can feel empty when little is happening." }
         ]
       }
+    },
+    {
+      "id": "marrakech",
+      "name": "Marrakech",
+      "country": "Morocco",
+      "photo": "marrakech",
+      "tagline": "Warm days, cool nights and a film festival.",
+      "go": "Ben Youssef Madrasa at opening",
+      "skip": "Arriving at Majorelle without a ticket",
+      "details": {
+        "why": "The summer heat is gone: days reach around 22°C and evenings turn cool, so bring a layer. From 20 to 28 November the city hosts the 23rd Marrakech International Film Festival, and the public can watch films with a free e-pass for over-18s.",
+        "facts": [
+          { "label": "WEATHER", "value": "10–22°C" },
+          { "label": "BUDGET", "value": "€" },
+          { "label": "STAY", "value": "3–4 days" },
+          { "label": "CURRENCY", "value": "Moroccan dirham" }
+        ],
+        "go": [
+          { "name": "Ben Youssef Madrasa", "map": "Ben Youssef Madrasa, Marrakech", "note": "A 16th-century Koranic school with a carved cedar and tiled courtyard. Open daily from 9am, 50 dirhams. Arrive at opening for the courtyard to yourself." },
+          { "name": "Jardin Majorelle, first slot", "map": "Jardin Majorelle, Marrakech", "note": "The cobalt-blue garden restored by Yves Saint Laurent. Book the earliest timed slot online, before the tour groups." },
+          { "name": "Le Jardin Secret", "map": "Le Jardin Secret, Marrakech", "note": "A restored riad garden in the middle of the medina. Climb the tower for views over the rooftops." },
+          { "name": "Jemaa el-Fna at dusk", "map": "Jemaa el-Fnaa, Marrakech", "note": "Watch the square fill with food stalls, musicians and storytellers from a rooftop café, then go down and walk through it." }
+        ],
+        "skip": [
+          { "name": "Arriving at Majorelle without a ticket", "note": "Tickets are sold online only and there is no ticket window at the gate.", "instead": "Book on the official site, tickets.jardinmajorelle.com, a day or two ahead." },
+          { "name": "Following a self-appointed guide in the souks", "note": "Offers to show you the way usually end at a cousin's shop or a demand for money.", "instead": "Use an offline map and say a polite no, or book a licensed guide through your riad." },
+          { "name": "Airport taxi touts", "note": "Drivers in arrivals often quote several times the fair price to the medina.", "instead": "Use the official taxi counter in arrivals. In town, ask for the meter: \"compteur, s'il vous plaît\"." }
+        ],
+        "taste": {
+          "dishes": [
+            { "name": "Tanjia", "note": "Marrakech's own dish: beef or lamb with preserved lemon and spices, slow-cooked for hours in a clay urn." },
+            { "name": "Tagine", "note": "Stewed meat or vegetables cooked under a cone-shaped lid. Try chicken with preserved lemon and olives." },
+            { "name": "Harira", "note": "A soup of tomato, lentils and chickpeas, often eaten with dates. Cheap, filling and right for a cool evening." },
+            { "name": "Msemen", "note": "Square, flaky griddle bread, eaten at breakfast with honey or soft cheese." }
+          ],
+          "places": [
+            { "name": "Chez Lamine Hadj Mustapha", "map": "Chez Lamine Hadj Mustapha, Marrakech", "note": "In the lane of mechoui stalls by Jemaa el-Fna. Slow-roasted lamb sold by weight, and tanjia. Go at lunchtime." },
+            { "name": "Nomad", "map": "Nomad, Marrakech", "note": "Modern Moroccan food on a rooftop above the spice square, Rahba Kedima. Book for sunset." },
+            { "name": "Al Fassia", "map": "Al Fassia Guéliz, Marrakech", "note": "A long-standing restaurant in Guéliz, run by women, known for classic Moroccan dishes. Book ahead." }
+          ]
+        },
+        "history": [
+          { "name": "An Almoravid capital", "note": "The Almoravid dynasty founded Marrakech around 1070 as the capital of an empire that stretched into Spain. The city gave Morocco its name." },
+          { "name": "The Koutoubia", "note": "The minaret of the Koutoubia Mosque went up under the Almohads in the 12th century. Its design influenced the Giralda in Seville." },
+          { "name": "The Saadian age", "note": "In the late 16th century Sultan Ahmad al-Mansur built the El Badi Palace and the Saadian Tombs. The tombs were sealed off and only rediscovered in 1917." },
+          { "name": "Majorelle and YSL", "note": "The painter Jacques Majorelle laid out his garden from the 1920s. Yves Saint Laurent and Pierre Bergé bought and saved it in 1980." }
+        ],
+        "nightlife": [
+          { "name": "How it works", "note": "Alcohol is served in licensed bars, hotels and restaurants rather than in the souks. Hivernage, outside the medina walls, is where most of the late-night places are." },
+          { "name": "Kabana", "map": "Kabana Rooftop, Marrakech", "note": "A rooftop bar facing the Koutoubia minaret. Best at sunset." },
+          { "name": "Le Salama", "map": "Le Salama, Marrakech", "note": "A restaurant and rooftop bar a few minutes from Jemaa el-Fna, one of the few in the medina with a full bar." },
+          { "name": "Comptoir Darna", "map": "Comptoir Darna, Marrakech", "note": "Dinner with music and dancers in Hivernage, turning into a lounge later in the night. Book a table." }
+        ]
+      }
+    },
+    {
+      "id": "kyoto",
+      "name": "Kyoto",
+      "country": "Japan",
+      "photo": "kyoto",
+      "tagline": "Ginkgo gold and the first red maples.",
+      "go": "Fushimi Inari at dawn",
+      "skip": "The Arashiyama bamboo grove at midday",
+      "details": {
+        "why": "Autumn colour is running late in 2026. The forecast puts Kyoto's yellow ginkgo at its best around 27 November and the red maples around 11 December, so the last week of November gives you gold trees and the first reds. Days are crisp and mostly dry, and nights get cold.",
+        "facts": [
+          { "label": "WEATHER", "value": "7–17°C" },
+          { "label": "BUDGET", "value": "€€" },
+          { "label": "STAY", "value": "3–4 days" },
+          { "label": "CURRENCY", "value": "Japanese yen" }
+        ],
+        "go": [
+          { "name": "Fushimi Inari at dawn", "map": "Fushimi Inari Taisha, Kyoto", "note": "Thousands of orange torii gates climbing the mountain. Open day and night and free. Start before 7am and keep climbing past the first viewpoint, where most people turn back." },
+          { "name": "Kiyomizu-dera at opening", "map": "Kiyomizu-dera, Kyoto", "note": "The wooden stage over the valley opens at 6am. Go then, and walk down through Sannenzaka before the shops open." },
+          { "name": "The Philosopher's Path", "map": "Philosopher's Path, Kyoto", "note": "A canal-side walk of about two kilometres from Nanzen-ji to Ginkaku-ji. Do it in the morning, and stop at Eikan-dō for maples." },
+          { "name": "Nishiki Market", "map": "Nishiki Market, Kyoto", "note": "A narrow covered market known as Kyoto's kitchen. Graze on pickles, tofu and skewers, but eat at the stall where you buy." }
+        ],
+        "skip": [
+          { "name": "The Arashiyama bamboo grove at midday", "note": "The path is short and, by late morning, shoulder to shoulder.", "instead": "Go by 7.30am, or walk on to the quieter Adashino Nenbutsu-ji, which has its own small bamboo path." },
+          { "name": "Walking into Gion's private lanes", "note": "Signs on the side lanes ban entry and photography, with fines of up to ¥10,000. Chasing geiko and maiko for photos is not welcome anywhere.", "instead": "Stay on Hanamikoji, which is a public street, and the Shirakawa canal, and ask before taking anyone's picture." },
+          { "name": "Bus 100 or 206 at peak times", "note": "The main sightseeing buses are packed and slow in autumn.", "instead": "Take the subway and walk, or at weekends the EX100 and EX101 sightseeing express buses (¥500) from Kyoto Station." }
+        ],
+        "taste": {
+          "dishes": [
+            { "name": "Yudōfu", "note": "Soft tofu simmered in kelp broth with a dipping sauce. A Buddhist temple dish, and made for a cold day." },
+            { "name": "Nishin soba", "note": "Buckwheat noodles in hot broth topped with sweet braised herring. A Kyoto classic." },
+            { "name": "Obanzai", "note": "Kyoto home cooking: small seasonal side dishes of vegetables, tofu and fish, often laid out on the counter to pick from." },
+            { "name": "Matcha sweets", "note": "Green tea in everything, from soft-serve to wagashi. Try it with a bowl of whisked matcha." }
+          ],
+          "places": [
+            { "name": "Okutan Nanzenji", "map": "Okutan Nanzenji, Kyoto", "note": "A yudōfu restaurant by Nanzen-ji temple that has served the dish for centuries. Set menus only, in a garden setting." },
+            { "name": "Matsuba", "map": "Matsuba Nishin Soba, Kyoto", "note": "The restaurant credited with creating nishin soba, by the Minamiza theatre in Gion." },
+            { "name": "Kagizen Yoshifusa", "map": "Kagizen Yoshifusa, Gion, Kyoto", "note": "An old Gion sweet shop known for kuzukiri, cool arrowroot noodles dipped in black sugar syrup." }
+          ]
+        },
+        "history": [
+          { "name": "Heian-kyō, 794", "note": "The emperor moved the capital here in 794, and Kyoto stayed the imperial seat for over a thousand years, until the move to Tokyo after 1868." },
+          { "name": "The Ōnin War", "note": "From 1467 to 1477 rival clans fought through the streets and burned much of the city. Many of the temples you see were rebuilt after it." },
+          { "name": "Spared in 1945", "note": "Kyoto was on the shortlist of targets for the atomic bomb. The US Secretary of War, Henry Stimson, had it removed, and the city escaped heavy bombing." },
+          { "name": "A World Heritage city", "note": "In 1994 UNESCO listed seventeen temples, shrines and a castle as the Historic Monuments of Ancient Kyoto." }
+        ],
+        "nightlife": [
+          { "name": "Kyoto goes to bed early", "note": "Temples close around 5pm and many restaurants stop serving by 9pm. The night is for a long dinner and a drink, not big clubs." },
+          { "name": "Pontochō", "map": "Pontocho, Kyoto", "note": "A lantern-lit alley along the Kamo River packed with restaurants and small bars. Check prices before you sit down." },
+          { "name": "Bar K6", "map": "Bar K6, Kyoto", "note": "A well-known whisky and cocktail bar on Kiyamachi, near Nijō." },
+          { "name": "Club Metro", "map": "Club Metro, Kyoto", "note": "A long-running club inside Jingū-Marutamachi station, with DJs and live nights. Check the schedule." }
+        ]
+      }
+    },
+    {
+      "id": "buenos-aires",
+      "name": "Buenos Aires",
+      "country": "Argentina",
+      "photo": "buenos-aires",
+      "tagline": "Spring, jacarandas and late nights.",
+      "go": "The jacaranda streets of Palermo",
+      "skip": "Changing money on Calle Florida",
+      "details": {
+        "why": "November is late spring: warm days, longer evenings and jacaranda trees in purple bloom across the city. On Saturday 14 November La Noche de los Museos opens hundreds of museums and cultural spaces for free, from 7pm to 2am. Bring an umbrella, as spring showers are common.",
+        "facts": [
+          { "label": "WEATHER", "value": "15–25°C" },
+          { "label": "BUDGET", "value": "€€" },
+          { "label": "STAY", "value": "4–5 days" },
+          { "label": "CURRENCY", "value": "Argentine peso" }
+        ],
+        "go": [
+          { "name": "The jacarandas", "map": "Parque Tres de Febrero, Buenos Aires", "note": "Walk the Palermo parks and Plaza San Martín while the trees are in flower. The bloom lasts a few weeks." },
+          { "name": "Recoleta Cemetery", "map": "Cementerio de la Recoleta, Buenos Aires", "note": "A city of marble mausoleums, including Eva Perón's family tomb. Foreign visitors pay an entry fee, by card only. Go early." },
+          { "name": "San Telmo on a Sunday", "map": "Feria de San Telmo, Buenos Aires", "note": "The antiques and crafts fair fills Calle Defensa, with tango in Plaza Dorrego. Then lunch at the San Telmo market." },
+          { "name": "Teatro Colón", "map": "Teatro Colón, Buenos Aires", "note": "One of the world's great opera houses, opened in 1908. Take the guided tour, or better, book a performance." }
+        ],
+        "skip": [
+          { "name": "Changing money on Calle Florida", "note": "Street changers offer no protection against fake notes or short counts.", "instead": "Pay with a foreign Visa or Mastercard. These now get the tourist exchange rate. Always choose to be charged in pesos." },
+          { "name": "La Boca beyond Caminito", "note": "The painted street is fine by day, but the surrounding blocks are not a place to wander, especially after dark.", "instead": "Go in daylight, stay on the main streets and take a taxi or app ride in and out." },
+          { "name": "The big tango dinner show", "note": "Expensive, staged and aimed at tour groups.", "instead": "Watch the real thing at a milonga, such as La Catedral, where locals dance late into the night." }
+        ],
+        "taste": {
+          "dishes": [
+            { "name": "Asado", "note": "Beef grilled slowly over wood or charcoal. Order bife de chorizo (sirloin) or ojo de bife (ribeye)." },
+            { "name": "Provoleta", "note": "A thick disc of provolone grilled until crisp outside and melting inside, with oregano." },
+            { "name": "Empanadas", "note": "Baked pastries filled with beef, chicken or ham and cheese. Cheap, everywhere and good." },
+            { "name": "Medialunas and dulce de leche", "note": "Small sweet croissants for breakfast, and the caramel spread that goes in almost every dessert." }
+          ],
+          "places": [
+            { "name": "Don Julio", "map": "Don Julio, Buenos Aires", "note": "A celebrated parrilla on a Palermo corner. Book well ahead, or expect a long wait for a table." },
+            { "name": "El Cuartito", "map": "El Cuartito, Buenos Aires", "note": "A pizzeria open since 1934, walls covered in sporting photos. Order a slice of fugazzeta, the onion and cheese pizza." },
+            { "name": "Café Tortoni", "map": "Café Tortoni, Buenos Aires", "note": "The city's most famous café, open since 1858 on Avenida de Mayo. Go for the room and a coffee, not a meal." }
+          ]
+        },
+        "history": [
+          { "name": "Founded twice", "note": "Pedro de Mendoza founded a settlement here in 1536, but it was abandoned. Juan de Garay founded the city again in 1580." },
+          { "name": "May 1810", "note": "The May Revolution in the square now called Plaza de Mayo began Argentina's road to independence, declared in 1816." },
+          { "name": "The immigrant boom", "note": "Between about 1880 and 1930 millions of Europeans arrived, many from Italy and Spain. The grand avenues, Teatro Colón and the accent all come from that era." },
+          { "name": "The Mothers of Plaza de Mayo", "note": "From 1977 mothers of people disappeared under the military dictatorship marched in front of the presidential palace. They still walk there on Thursday afternoons." }
+        ],
+        "nightlife": [
+          { "name": "Late, then later", "note": "Dinner rarely starts before 9.30pm, bars fill after midnight and clubs get going around 2am." },
+          { "name": "Florería Atlántico", "map": "Florería Atlántico, Buenos Aires", "note": "A cocktail bar hidden in the basement behind a flower shop in Retiro." },
+          { "name": "La Catedral", "map": "La Catedral Club, Buenos Aires", "note": "A milonga in a former warehouse in Almagro, relaxed and a little bohemian. Beginners welcome, with classes early in the evening." },
+          { "name": "Niceto Club", "map": "Niceto Club, Buenos Aires", "note": "A Palermo venue for live bands and club nights. Check what's on." }
+        ]
+      }
     }
   ]
 }
