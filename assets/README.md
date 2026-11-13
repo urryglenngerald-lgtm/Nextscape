@@ -1,9 +1,5 @@
 # Photos
 
-The app expects three photos in this folder, named exactly:
+One photo per destination, named after the `photo` field in `data/destinations.json` (for example `kyoto.jpg`).
 
-- lisbon.jpg
-- kotor.jpg
-- ljubljana.jpg
-
-Each month, replace them with the new destinations' photos and update `src/data.js`.
+Style: square, 1080 × 1080, faded and desaturated to match the black and silver design.
